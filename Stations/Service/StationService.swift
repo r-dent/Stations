@@ -10,16 +10,17 @@ import CoreLocation
 
 class StationService {
 
+    struct UrlError: Error {}
     struct EncodingError: Error {}
 
     static func findStations(
         nearby location: CLLocation,
         range: CLLocationDistance = 100,
         limit: Int = 10
-    ) -> Endpoint<[Station]>? {
+    ) throws -> Endpoint<[Station]> {
 
         guard var components = URLComponents(string: "https://mobile.bahn.de/bin/query.exe/dny") else {
-            return nil
+            throw UrlError()
         }
 
         let getString: (Double) -> String = {
@@ -44,7 +45,7 @@ class StationService {
         components.queryItems = parameters.map{ URLQueryItem(name: $0.key, value: $0.value) }
 
         guard let url = components.url else {
-            return nil
+            throw UrlError()
         }
 
         return Endpoint(.get, url: url) { data, _ in
@@ -59,16 +60,14 @@ class StationService {
         }
     }
 
-    func fetchTimetable(
+    static func fetchTimetable(
         for station: Station,
         starting: Date? = nil,
-        limit: Int = 10,
-        completion: @escaping (Result<[Departure], Error>) -> Void
-    ) {
+        limit: Int = 10
+    ) throws -> Endpoint<[Departure]> {
 
         guard var components = URLComponents(string: "https://reiseauskunft.bahn.de/bin/stboard.exe/dn") else {
-            completion(.failure(NSError(domain: "url parsing", code: 0)))
-            return
+            throw UrlError()
         }
 
         var parameters: [String: String] = [
@@ -92,32 +91,23 @@ class StationService {
         }
 
         guard let url = components.url else {
-            completion(.failure(NSError(domain: "url composing", code: 0)))
-            return
+            throw UrlError()
         }
-
-        let task = URLSession.shared.dataTask(with: url) { (data, response, dataError) in
-
-            if let error = dataError {
-                completion(.failure(error))
-                return
+        
+        return Endpoint(.get, url: url) { data, _ in
+            Result {
+                guard
+                    let data = data,
+                    let xmlString = String(data: data, encoding: .isoLatin1),
+                    let utf8data = String(format: "<journeys>%@</journeys>", xmlString).data(using: .utf8),
+                    let xmlDoc = XMLTransform().document(with: utf8data)
+                    else {
+                        throw EncodingError()
+                }
+                
+                return xmlDoc.children.compactMap { try? Departure(from: $0.attributes) }
             }
-
-            guard
-                let data = data,
-                let xmlString = String(data: data, encoding: .isoLatin1),
-                let utf8data = String(format: "<journeys>%@</journeys>", xmlString).data(using: .utf8),
-                let xmlDoc = XMLTransform().document(with: utf8data)
-                else {
-                    completion(.failure(NSError(domain: "decoding", code: 0)))
-                    return
-            }
-
-            let departures: [Departure] = xmlDoc.children.compactMap { try? Departure(from: $0.attributes) }
-
-            completion(.success(departures))
         }
-        task.resume()
     }
 }
 

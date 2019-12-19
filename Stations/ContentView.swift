@@ -30,14 +30,13 @@ struct ContentView: View {
             timestamp: Date()
         )
 
-        return Resource(endpoint: StationService.findStations(nearby: location)!)
+        return Resource(endpoint: try! StationService.findStations(nearby: location))
     }()
 
     var body: some View {
         NavigationView {
             MasterView(stations: stations)
                 .navigationBarTitle(Text("Master"))
-            DetailView()
         }.navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
@@ -59,16 +58,21 @@ struct MasterView: View {
 }
 
 struct DetailView: View {
-    var station: Station?
+
+    let station: Station
+    @ObservedObject private var departures: Resource<[Departure]>
+
+    init(station: Station) {
+        self.station = station
+        self.departures = Resource(endpoint: try! StationService.fetchTimetable(for: station))
+    }
 
     var body: some View {
-        Group {
-            if station != nil {
-                Text(station!.name)
-            } else {
-                Text("Detail view content goes here")
+        List {
+            ForEach(departures.value ?? []) { departure in
+                Text(departure.dir)
             }
-        }.navigationBarTitle(Text("Detail"))
+        }.navigationBarTitle(Text(station.name))
     }
 }
 
