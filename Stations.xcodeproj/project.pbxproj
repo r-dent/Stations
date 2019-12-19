@@ -20,6 +20,8 @@
 		30F0E50923A95CA5001D00F6 /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E50823A95CA5001D00F6 /* Departure.swift */; };
 		30F0E50B23A95CDA001D00F6 /* StationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E50A23A95CDA001D00F6 /* StationResult.swift */; };
 		30F0E50D23A95DB5001D00F6 /* StationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E50C23A95DB5001D00F6 /* StationService.swift */; };
+		30F0E51423AA6C3A001D00F6 /* TinyNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E51323AA6C3A001D00F6 /* TinyNetworking.swift */; };
+		30F0E51623AA6D44001D00F6 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E51523AA6D44001D00F6 /* Resource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		30F0E50823A95CA5001D00F6 /* Departure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departure.swift; sourceTree = "<group>"; };
 		30F0E50A23A95CDA001D00F6 /* StationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationResult.swift; sourceTree = "<group>"; };
 		30F0E50C23A95DB5001D00F6 /* StationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationService.swift; sourceTree = "<group>"; };
+		30F0E51323AA6C3A001D00F6 /* TinyNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinyNetworking.swift; sourceTree = "<group>"; };
+		30F0E51523AA6D44001D00F6 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +138,8 @@
 		30F0E50523A95C83001D00F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				30F0E50623A95C9A001D00F6 /* Station.swift */,
 				30F0E50823A95CA5001D00F6 /* Departure.swift */,
+				30F0E50623A95C9A001D00F6 /* Station.swift */,
 				30F0E50A23A95CDA001D00F6 /* StationResult.swift */,
 			);
 			path = Model;
@@ -144,7 +148,9 @@
 		30F0E50E23A96167001D00F6 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				30F0E51523AA6D44001D00F6 /* Resource.swift */,
 				30F0E50C23A95DB5001D00F6 /* StationService.swift */,
+				30F0E51323AA6C3A001D00F6 /* TinyNetworking.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -253,7 +259,9 @@
 				30F0E4DF23A95994001D00F6 /* AppDelegate.swift in Sources */,
 				30F0E4E123A95994001D00F6 /* SceneDelegate.swift in Sources */,
 				30F0E4E323A95994001D00F6 /* ContentView.swift in Sources */,
+				30F0E51623AA6D44001D00F6 /* Resource.swift in Sources */,
 				30F0E50D23A95DB5001D00F6 /* StationService.swift in Sources */,
+				30F0E51423AA6C3A001D00F6 /* TinyNetworking.swift in Sources */,
 				30F0E50923A95CA5001D00F6 /* Departure.swift in Sources */,
 				30F0E50223A95A3A001D00F6 /* XMLNode.swift in Sources */,
 				30F0E50723A95C9A001D00F6 /* Station.swift in Sources */,

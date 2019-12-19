@@ -10,22 +10,16 @@ import CoreLocation
 
 class StationService {
 
-    let jsonDecoder: JSONDecoder
+    struct EncodingError: Error {}
 
-    init() {
-        jsonDecoder = JSONDecoder()
-    }
-
-    func findStations(
+    static func findStations(
         nearby location: CLLocation,
         range: CLLocationDistance = 100,
-        limit: Int = 10,
-        completion: @escaping (Result<[Station], Error>) -> Void
-    ) {
+        limit: Int = 10
+    ) -> Endpoint<[Station]>? {
 
         guard var components = URLComponents(string: "https://mobile.bahn.de/bin/query.exe/dny") else {
-            completion(.failure(NSError()))
-            return
+            return nil
         }
 
         let getString: (Double) -> String = {
@@ -50,25 +44,19 @@ class StationService {
         components.queryItems = parameters.map{ URLQueryItem(name: $0.key, value: $0.value) }
 
         guard let url = components.url else {
-            completion(.failure(NSError()))
-            return
+            return nil
         }
 
-        let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, dataError) in
+        return Endpoint(.get, url: url) { data, _ in
+            Result {
+                guard
+                    let data = data,
+                    let cleanData = String(data: data, encoding: .isoLatin1)?.data(using: .utf8)
+                    else { throw EncodingError() }
 
-            guard let data = data, let cleanData = String(data: data, encoding: .isoLatin1)?.data(using: .utf8) else {
-                completion(.failure(NSError()))
-                return
-            }
-
-            do {
-                let stations = try self?.jsonDecoder.decode(StationResult.self, from: cleanData).stops ?? []
-                completion(.success(stations))
-            } catch  {
-                completion(.failure(error))
+                return try JSONDecoder().decode(StationResult.self, from: cleanData).stops
             }
         }
-        task.resume()
     }
 
     func fetchTimetable(

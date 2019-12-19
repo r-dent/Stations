@@ -22,3 +22,10 @@ struct Departure: Codable {
     let prod: String
     let targetLoc: String
 }
+
+extension Departure: Identifiable {
+
+    var id: String {
+        return self.fpDate + self.fpTime + self.prod + self.targetLoc
+    }
+}

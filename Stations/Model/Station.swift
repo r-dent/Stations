@@ -28,3 +28,9 @@ struct Station: Codable {
         return CLLocationCoordinate2D(latitude: lat, longitude: long)
     }
 }
+
+extension Station: Identifiable {
+    var id: String {
+        return self.extId
+    }
+}

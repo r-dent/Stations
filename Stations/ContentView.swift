@@ -17,9 +17,8 @@ private let dateFormatter: DateFormatter = {
 }()
 
 struct ContentView: View {
-    @State private var dates = [Date]()
 
-    init() {
+    @ObservedObject private var stations: Resource<[Station]> = {
 
         let location = CLLocation(
             coordinate: CLLocationCoordinate2D(latitude: 51.334421, longitude: 12325947),
@@ -31,67 +30,41 @@ struct ContentView: View {
             timestamp: Date()
         )
 
-        let service = StationService()
-
-        service.findStations(nearby: location) {
-            switch $0 {
-            case .success(let stations):
-                service.fetchTimetable(for: stations.first!) { timetableResult in
-                    print(timetableResult)
-                }
-                print(stations.map{ $0.name })
-            case .failure(let error):
-                print(error)
-            }
-        }
-
-
-    }
+        return Resource(endpoint: StationService.findStations(nearby: location)!)
+    }()
 
     var body: some View {
         NavigationView {
-            MasterView(dates: $dates)
+            MasterView(stations: stations)
                 .navigationBarTitle(Text("Master"))
-                .navigationBarItems(
-                    leading: EditButton(),
-                    trailing: Button(
-                        action: {
-                            withAnimation { self.dates.insert(Date(), at: 0) }
-                        }
-                    ) {
-                        Image(systemName: "plus")
-                    }
-                )
             DetailView()
         }.navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
 
 struct MasterView: View {
-    @Binding var dates: [Date]
+    @ObservedObject var stations: Resource<[Station]>
 
     var body: some View {
         List {
-            ForEach(dates, id: \.self) { date in
+            ForEach(stations.value ?? []) { station in
                 NavigationLink(
-                    destination: DetailView(selectedDate: date)
+                    destination: DetailView(station: station)
                 ) {
-                    Text("\(date, formatter: dateFormatter)")
+                    Text(station.name)
                 }
-            }.onDelete { indices in
-                indices.forEach { self.dates.remove(at: $0) }
             }
         }
     }
 }
 
 struct DetailView: View {
-    var selectedDate: Date?
+    var station: Station?
 
     var body: some View {
         Group {
-            if selectedDate != nil {
-                Text("\(selectedDate!, formatter: dateFormatter)")
+            if station != nil {
+                Text(station!.name)
             } else {
                 Text("Detail view content goes here")
             }
