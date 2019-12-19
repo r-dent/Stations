@@ -18,25 +18,22 @@ private let dateFormatter: DateFormatter = {
 
 struct ContentView: View {
 
-    @ObservedObject private var stations: Resource<[Station]> = {
-
-        let location = CLLocation(
-            coordinate: CLLocationCoordinate2D(latitude: 51.334421, longitude: 12325947),
-            altitude: 0,
-            horizontalAccuracy: 0,
-            verticalAccuracy: 0,
-            course: 0,
-            speed: 0,
-            timestamp: Date()
-        )
-
-        return Resource(endpoint: try! StationService.findStations(nearby: location))
-    }()
+    @ObservedObject var location = Location()
 
     var body: some View {
         NavigationView {
-            MasterView(stations: stations)
-                .navigationBarTitle(Text("Master"))
+            if !location.authorized {
+                Button(action: { self.location.askForPermission() }) {
+                    Text("Enable location")
+                }
+            } else if location.value == nil {
+                Text("Searching location...")
+                    .onAppear { self.location.start() }
+            } else {
+                MasterView(stations:
+                    Resource(endpoint: try! StationService.findStations(nearby: location.value!))
+                )
+            }
         }.navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
@@ -53,7 +50,7 @@ struct MasterView: View {
                     Text(station.name)
                 }
             }
-        }
+        }.navigationBarTitle("Stations")
     }
 }
 
@@ -70,7 +67,11 @@ struct DetailView: View {
     var body: some View {
         List {
             ForEach(departures.value ?? []) { departure in
-                Text(departure.dir)
+                HStack {
+                    Text(departure.fpTime)
+                    Text(departure.prod)
+                    Text(departure.dir)
+                }
             }
         }.navigationBarTitle(Text(station.name))
     }

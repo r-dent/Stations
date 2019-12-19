@@ -22,6 +22,7 @@
 		30F0E50D23A95DB5001D00F6 /* StationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E50C23A95DB5001D00F6 /* StationService.swift */; };
 		30F0E51623AA6D44001D00F6 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E51523AA6D44001D00F6 /* Resource.swift */; };
 		30F0E51723ABBF78001D00F6 /* TinyNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E51323AA6C3A001D00F6 /* TinyNetworking.swift */; };
+		30F0E51B23ABC31C001D00F6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E51A23ABC31C001D00F6 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		30F0E50C23A95DB5001D00F6 /* StationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationService.swift; sourceTree = "<group>"; };
 		30F0E51323AA6C3A001D00F6 /* TinyNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinyNetworking.swift; sourceTree = "<group>"; };
 		30F0E51523AA6D44001D00F6 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		30F0E51A23ABC31C001D00F6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		30F0E51C23AC024C001D00F6 /* Tapetenwerk.gpx */ = {isa = PBXFileReference; lastKnownFileType = text; path = Tapetenwerk.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,7 @@
 				30F0E4DE23A95994001D00F6 /* AppDelegate.swift */,
 				30F0E4E023A95994001D00F6 /* SceneDelegate.swift */,
 				30F0E4E223A95994001D00F6 /* ContentView.swift */,
+				30F0E51C23AC024C001D00F6 /* Tapetenwerk.gpx */,
 				30F0E4E423A95996001D00F6 /* Assets.xcassets */,
 				30F0E4E923A95996001D00F6 /* LaunchScreen.storyboard */,
 				30F0E4EC23A95996001D00F6 /* Info.plist */,
@@ -149,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				30F0E51523AA6D44001D00F6 /* Resource.swift */,
+				30F0E51A23ABC31C001D00F6 /* Location.swift */,
 				30F0E50C23A95DB5001D00F6 /* StationService.swift */,
 				30F0E51323AA6C3A001D00F6 /* TinyNetworking.swift */,
 			);
@@ -266,6 +271,7 @@
 				30F0E50223A95A3A001D00F6 /* XMLNode.swift in Sources */,
 				30F0E50723A95C9A001D00F6 /* Station.swift in Sources */,
 				30F0E50423A95A85001D00F6 /* XMLTransform.swift in Sources */,
+				30F0E51B23ABC31C001D00F6 /* Location.swift in Sources */,
 				30F0E50B23A95CDA001D00F6 /* StationResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,7 +426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Stations/Preview Content\"";
-				DEVELOPMENT_TEAM = Z88LRHWM48;
+				DEVELOPMENT_TEAM = SBPV56G7LG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Stations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -440,7 +446,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Stations/Preview Content\"";
-				DEVELOPMENT_TEAM = Z88LRHWM48;
+				DEVELOPMENT_TEAM = SBPV56G7LG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Stations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
