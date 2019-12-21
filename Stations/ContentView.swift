@@ -18,39 +18,54 @@ private let dateFormatter: DateFormatter = {
 
 struct ContentView: View {
 
-    @ObservedObject var location = Location()
-
     var body: some View {
         NavigationView {
-            if !location.authorized {
-                Button(action: { self.location.askForPermission() }) {
-                    Text("Enable location")
-                }
-            } else if location.value == nil {
-                Text("Searching location...")
-                    .onAppear { self.location.start() }
-            } else {
-                MasterView(stations:
-                    Resource(endpoint: try! StationService.findStations(nearby: location.value!))
-                )
-            }
+            MasterView()
         }.navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
 
 struct MasterView: View {
-    @ObservedObject var stations: Resource<[Station]>
+    @ObservedObject var controller = StationController()
 
     var body: some View {
+        view(for: controller.state).navigationBarTitle("Stations")
+    }
+
+    var locationPermissionButton: some View {
+        Button(action: { self.controller.location.askForPermission() }) {
+            Text("Enable location")
+        }
+    }
+
+    func list(with stations: [Station]) -> some View {
         List {
-            ForEach(stations.value ?? []) { station in
+            ForEach(stations) { station in
                 NavigationLink(
                     destination: DetailView(station: station)
                 ) {
                     Text(station.name)
                 }
             }
-        }.navigationBarTitle("Stations")
+        }
+    }
+
+    func view(for state: StationController.State) -> some View {
+        
+        switch state {
+        case .locationPermissionNeeded:
+            return AnyView(locationPermissionButton)
+        case .locationPermissionForbidden:
+            return AnyView(Text("No permission given."))
+
+        case .stations(let stations):
+            if let stations = stations {
+                return AnyView(list(with: stations))
+            } else {
+                return AnyView(Text("Loading Stations..."))
+            }
+        }
+
     }
 }
 

@@ -13,9 +13,9 @@ import CoreLocation
 final class Location: NSObject, ObservableObject {
 
     let manager: CLLocationManager
-    var lastLocationUpdate = Date()
+    private var lastLocationUpdate = Date()
     @Published var value: CLLocation?
-    @Published var authorized: Bool
+    @Published var authorized: Bool?
 
     override init() {
 
@@ -34,8 +34,11 @@ final class Location: NSObject, ObservableObject {
         manager.startUpdatingLocation()
     }
 
-    private static func authStatus(with status: CLAuthorizationStatus) -> Bool {
-        status == .authorizedWhenInUse || status == .authorizedAlways
+    private static func authStatus(with status: CLAuthorizationStatus) -> Bool? {
+        if status == .notDetermined {
+            return nil
+        }
+        return status == .authorizedWhenInUse || status == .authorizedAlways
     }
 }
 
@@ -45,6 +48,7 @@ extension Location: CLLocationManagerDelegate {
 
         let now = Date()
         if self.value == nil || (!locations.isEmpty && now.timeIntervalSince(lastLocationUpdate) > 5) {
+            print("Location: " + String(describing: locations.first))
             self.value = locations.first
             self.lastLocationUpdate = now
         }

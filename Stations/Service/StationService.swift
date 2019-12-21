@@ -24,12 +24,11 @@ class StationService {
         }
 
         let getString: (Double) -> String = {
-            var string = NSNumber(floatLiteral: $0).description.replacingOccurrences(of: ".", with: "")
-            string = NSString(string: "00000000").replacingCharacters(in: NSRange(location: 0, length: string.count), with: string)
-            if($0 < 10){
-                string = String(string.prefix(string.count))
-            }
-            return string
+            String(
+                String(format: "%f", $0)
+                    .replacingOccurrences(of: ".", with: "")
+                    .prefix(8)
+            )
         }
 
         let parameters: [String: String] = [
