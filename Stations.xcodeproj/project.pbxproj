@@ -25,6 +25,7 @@
 		30F0E51B23ABC31C001D00F6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E51A23ABC31C001D00F6 /* Location.swift */; };
 		30F0E51E23AD2C46001D00F6 /* StationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E51D23AD2C46001D00F6 /* StationController.swift */; };
 		30F0E52023ADA1D4001D00F6 /* Einmal durch Jena.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 30F0E51F23ADA1D4001D00F6 /* Einmal durch Jena.gpx */; };
+		30F0E52323AE506A001D00F6 /* DeparturesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E52223AE506A001D00F6 /* DeparturesController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		30F0E51C23AC024C001D00F6 /* Tapetenwerk.gpx */ = {isa = PBXFileReference; lastKnownFileType = text; path = Tapetenwerk.gpx; sourceTree = "<group>"; };
 		30F0E51D23AD2C46001D00F6 /* StationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationController.swift; sourceTree = "<group>"; };
 		30F0E51F23ADA1D4001D00F6 /* Einmal durch Jena.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Einmal durch Jena.gpx"; sourceTree = "<group>"; };
+		30F0E52223AE506A001D00F6 /* DeparturesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +109,7 @@
 				30F0E50E23A96167001D00F6 /* Service */,
 				30F0E4DE23A95994001D00F6 /* AppDelegate.swift */,
 				30F0E4E023A95994001D00F6 /* SceneDelegate.swift */,
-				30F0E4E223A95994001D00F6 /* ContentView.swift */,
-				30F0E51D23AD2C46001D00F6 /* StationController.swift */,
+				30F0E52123AE5037001D00F6 /* Views */,
 				30F0E51F23ADA1D4001D00F6 /* Einmal durch Jena.gpx */,
 				30F0E51C23AC024C001D00F6 /* Tapetenwerk.gpx */,
 				30F0E4E423A95996001D00F6 /* Assets.xcassets */,
@@ -164,6 +165,16 @@
 				30F0E51323AA6C3A001D00F6 /* TinyNetworking.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		30F0E52123AE5037001D00F6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				30F0E4E223A95994001D00F6 /* ContentView.swift */,
+				30F0E51D23AD2C46001D00F6 /* StationController.swift */,
+				30F0E52223AE506A001D00F6 /* DeparturesController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +287,7 @@
 				30F0E51623AA6D44001D00F6 /* Resource.swift in Sources */,
 				30F0E50D23A95DB5001D00F6 /* StationService.swift in Sources */,
 				30F0E50923A95CA5001D00F6 /* Departure.swift in Sources */,
+				30F0E52323AE506A001D00F6 /* DeparturesController.swift in Sources */,
 				30F0E50223A95A3A001D00F6 /* XMLNode.swift in Sources */,
 				30F0E50723A95C9A001D00F6 /* Station.swift in Sources */,
 				30F0E50423A95A85001D00F6 /* XMLTransform.swift in Sources */,

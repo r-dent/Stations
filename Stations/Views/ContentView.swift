@@ -65,30 +65,47 @@ struct MasterView: View {
                 return AnyView(Text("Loading Stations..."))
             }
         }
-
     }
 }
 
 struct DetailView: View {
 
-    let station: Station
-    @ObservedObject private var departures: Resource<[Departure]>
+    @ObservedObject private var controller: DeparturesController
 
     init(station: Station) {
-        self.station = station
-        self.departures = Resource(endpoint: try! StationService.fetchTimetable(for: station))
+        self.controller = DeparturesController(station: station)
     }
 
     var body: some View {
-        List {
-            ForEach(departures.value ?? []) { departure in
-                HStack {
-                    Text(departure.fpTime)
-                    Text(departure.prod)
-                    Text(departure.dir)
-                }
+        view(for: controller.state).navigationBarTitle(Text(controller.station.name))
+    }
+
+
+    func view(for state: DeparturesController.State) -> some View {
+
+        switch state {
+        case .content(let result):
+
+            switch result {
+            case .success(let departures):
+                return AnyView(List {
+                    ForEach(departures) { departure in
+                        HStack {
+                            Text(departure.fpTime)
+                            Text(departure.prod)
+                            Text(departure.dir)
+                        }
+                    }
+                })
+
+            case .failure(let error):
+                return AnyView(Text(String(describing: error)))
             }
-        }.navigationBarTitle(Text(station.name))
+
+        case .loading:
+            return AnyView(Text("Loading").onAppear { self.controller.load() })
+
+        }
     }
 }
 
