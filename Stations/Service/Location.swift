@@ -34,6 +34,10 @@ final class Location: NSObject, ObservableObject {
         manager.startUpdatingLocation()
     }
 
+    func stop() {
+        manager.stopUpdatingLocation()
+    }
+
     private static func authStatus(with status: CLAuthorizationStatus) -> Bool? {
         if status == .notDetermined {
             return nil

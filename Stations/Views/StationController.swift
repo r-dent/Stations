@@ -35,7 +35,7 @@ class StationController: ObservableObject {
                 self?.location.start()
             }
         }
-        
+
         locationUpdates = location.$value.sink { [weak self] loc in
             if let location = loc {
                 if self?.lastLocation == nil ||  self!.lastLocation!.distance(from: location) > 20 {
@@ -46,7 +46,21 @@ class StationController: ObservableObject {
         }
     }
 
-    static func state(for authorized: Bool?) -> State {
+    func startLocationMonitoring() {
+
+        if case .stations = state {
+            location.start()
+        }
+    }
+
+    func stopLocationMonitoring() {
+
+        if case .stations = state {
+            location.stop()
+        }
+    }
+
+    private static func state(for authorized: Bool?) -> State {
 
         if let authorized = authorized {
             return (authorized ? .stations(nil) : .locationPermissionForbidden)
@@ -55,7 +69,7 @@ class StationController: ObservableObject {
         }
     }
 
-    func loadStations(for location: CLLocation) {
+    private func loadStations(for location: CLLocation) {
 
         guard let endpoint = try? StationService.findStations(nearby: location) else {
             return

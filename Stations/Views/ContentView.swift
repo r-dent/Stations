@@ -29,7 +29,10 @@ struct MasterView: View {
     @ObservedObject var controller = StationController()
 
     var body: some View {
-        view(for: controller.state).navigationBarTitle("Stations")
+        view(for: controller.state)
+            .navigationBarTitle("Stations")
+            .onAppear { self.controller.startLocationMonitoring() }
+            .onDisappear {self.controller.stopLocationMonitoring() }
     }
 
     var locationPermissionButton: some View {
