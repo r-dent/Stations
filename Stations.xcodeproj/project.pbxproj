@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30AC9AFB24BADDFA0052F0A0 /* StationListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC9AFA24BADDFA0052F0A0 /* StationListItemView.swift */; };
+		30AC9AFD24BB2BB90052F0A0 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC9AFC24BB2BB90052F0A0 /* PreviewData.swift */; };
+		30AC9AFF24BB3B590052F0A0 /* DepartureListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC9AFE24BB3B590052F0A0 /* DepartureListItemView.swift */; };
+		30AC9B0124BB3C700052F0A0 /* DeparturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC9B0024BB3C700052F0A0 /* DeparturesView.swift */; };
+		30AC9B0324BB3CB20052F0A0 /* StationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC9B0224BB3CB20052F0A0 /* StationsView.swift */; };
 		30F0E4DF23A95994001D00F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E4DE23A95994001D00F6 /* AppDelegate.swift */; };
 		30F0E4E123A95994001D00F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E4E023A95994001D00F6 /* SceneDelegate.swift */; };
 		30F0E4E323A95994001D00F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0E4E223A95994001D00F6 /* ContentView.swift */; };
@@ -39,6 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30AC9AFA24BADDFA0052F0A0 /* StationListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListItemView.swift; sourceTree = "<group>"; };
+		30AC9AFC24BB2BB90052F0A0 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
+		30AC9AFE24BB3B590052F0A0 /* DepartureListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureListItemView.swift; sourceTree = "<group>"; };
+		30AC9B0024BB3C700052F0A0 /* DeparturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesView.swift; sourceTree = "<group>"; };
+		30AC9B0224BB3CB20052F0A0 /* StationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsView.swift; sourceTree = "<group>"; };
 		30F0E4DB23A95994001D00F6 /* Stations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F0E4DE23A95994001D00F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F0E4E023A95994001D00F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				30F0E4E723A95996001D00F6 /* Preview Assets.xcassets */,
+				30AC9AFC24BB2BB90052F0A0 /* PreviewData.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -171,8 +182,12 @@
 			isa = PBXGroup;
 			children = (
 				30F0E4E223A95994001D00F6 /* ContentView.swift */,
-				30F0E51D23AD2C46001D00F6 /* StationController.swift */,
+				30AC9AFE24BB3B590052F0A0 /* DepartureListItemView.swift */,
 				30F0E52223AE506A001D00F6 /* DeparturesController.swift */,
+				30AC9B0024BB3C700052F0A0 /* DeparturesView.swift */,
+				30F0E51D23AD2C46001D00F6 /* StationController.swift */,
+				30AC9AFA24BADDFA0052F0A0 /* StationListItemView.swift */,
+				30AC9B0224BB3CB20052F0A0 /* StationsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -285,10 +300,15 @@
 				30F0E51723ABBF78001D00F6 /* TinyNetworking.swift in Sources */,
 				30F0E51E23AD2C46001D00F6 /* StationController.swift in Sources */,
 				30F0E51623AA6D44001D00F6 /* Resource.swift in Sources */,
+				30AC9AFB24BADDFA0052F0A0 /* StationListItemView.swift in Sources */,
 				30F0E50D23A95DB5001D00F6 /* StationService.swift in Sources */,
+				30AC9AFD24BB2BB90052F0A0 /* PreviewData.swift in Sources */,
 				30F0E50923A95CA5001D00F6 /* Departure.swift in Sources */,
 				30F0E52323AE506A001D00F6 /* DeparturesController.swift in Sources */,
+				30AC9AFF24BB3B590052F0A0 /* DepartureListItemView.swift in Sources */,
+				30AC9B0324BB3CB20052F0A0 /* StationsView.swift in Sources */,
 				30F0E50223A95A3A001D00F6 /* XMLNode.swift in Sources */,
+				30AC9B0124BB3C700052F0A0 /* DeparturesView.swift in Sources */,
 				30F0E50723A95C9A001D00F6 /* Station.swift in Sources */,
 				30F0E50423A95A85001D00F6 /* XMLTransform.swift in Sources */,
 				30F0E51B23ABC31C001D00F6 /* Location.swift in Sources */,
