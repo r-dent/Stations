@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct StationsView: View {
-    @ObservedObject var controller = StationController()
+    @ObservedObject var controller: StationController
 
     var body: some View {
         view(for: controller.state)

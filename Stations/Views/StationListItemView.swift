@@ -13,21 +13,30 @@ struct StationListItemView: View {
     @State var station: Station
 
     var body: some View {
-        VStack {
-            NavigationLink(
-                destination: DeparturesView(station: station)
-            ) {
-                VStack(alignment: .leading) {
-                    Text(station.name)
-                        .fixedSize(horizontal: false, vertical: true)
-                    HStack {
-                        Image(systemName: "location")
-                        Text(station.dist + "m")
-                    }
-                    .font(.subheadline)
+
+        NavigationLink(
+            destination: DeparturesView(station: station)
+        ) {
+            VStack(alignment: .leading) {
+                Text(station.name)
+                    .fixedSize(horizontal: false, vertical: true)
+                HStack {
+                    Image(systemName: "location")
+                    Text(station.dist + "m")
+
                 }
+                .font(.subheadline)
             }
         }
+        .padding()
+        .foregroundColor(.white)
+        .background(
+            Rectangle()
+                .cornerRadius(8)
+                .foregroundColor(.blue)
+        )
+
+
     }
 
 }
@@ -39,7 +48,7 @@ struct StationListItemView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             List {
-                ForEach(PreviewData.stations) { station in
+                ForEach(PreviewData.stations.prefix(3)) { station in
                     StationListItemView(station: station)
                 }
             }
@@ -50,6 +59,7 @@ struct StationListItemView_Previews: PreviewProvider {
             }
             .preferredColorScheme(.dark)
         }
+        .previewLayout(.sizeThatFits)
 
     }
 }

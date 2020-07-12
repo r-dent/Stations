@@ -9,6 +9,15 @@
 import Foundation
 
 struct Departure: Codable {
+
+    enum Product: String {
+        case bus = "Bus"
+        case tram = "STR"
+        case suburban = "S"
+        case train = "Bahn"
+
+        static let `default`: Product = .train
+    }
     
     let administration: String
     let approxDelay: String
@@ -27,5 +36,22 @@ extension Departure: Identifiable {
 
     var id: String {
         return self.fpDate + self.fpTime + self.prod + self.targetLoc
+    }
+}
+
+extension Departure {
+
+    var lineNumber: String {
+        String(
+            prod.split(separator: "#").first?.split(separator: " ").last ?? ""
+        )
+    }
+
+    var product: Product {
+        
+        guard let productIdentifier: String.SubSequence = prod.split(separator: "#").last else {
+            return .default
+        }
+        return Product(rawValue: String(productIdentifier)) ?? .default
     }
 }

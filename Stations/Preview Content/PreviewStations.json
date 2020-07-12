@@ -1,0 +1,112 @@
+[
+    {
+        "dist": "140",
+        "extId": "958206",
+        "name": "Henriettenstr., Leipzig",
+        "planId": "1594151042",
+        "prodclass": "288",
+        "puic": "80",
+        "urlname": "Henriettenstr.,%20Leipzig",
+        "x": "12324364",
+        "y": "51333629"
+    },
+    {
+        "dist": "318",
+        "extId": "8012236",
+        "name": "Leipzig-Lindenau",
+        "planId": "1594151042",
+        "prodclass": "24",
+        "puic": "80",
+        "urlname": "Leipzig-Lindenau",
+        "x": "12321487",
+        "y": "51333754"
+    },
+    {
+        "dist": "327",
+        "extId": "957851",
+        "name": "Lützner/Merseburger Str., Leipzig",
+        "planId": "1594151042",
+        "prodclass": "288",
+        "puic": "80",
+        "urlname": "L%FCtzner%2FMerseburger%20Str.,%20Leipzig",
+        "x": "12330153",
+        "y": "51335750"
+    },
+    {
+        "dist": "434",
+        "extId": "954693",
+        "name": "Georg-Schwarz-/Merseburger Str., Leipzig",
+        "planId": "1594151042",
+        "prodclass": "800",
+        "puic": "80",
+        "urlname": "Georg-Schwarz-%2FMerseburger%20Str.,%20Leipzig",
+        "x": "12327267",
+        "y": "51338240"
+    },
+    {
+        "dist": "527",
+        "extId": "958071",
+        "name": "Karl-Heine-/Gießerstr., Leipzig",
+        "planId": "1594151042",
+        "prodclass": "288",
+        "puic": "80",
+        "urlname": "Karl-Heine-%2FGie%DFerstr.,%20Leipzig",
+        "x": "12327276",
+        "y": "51329754"
+    },
+    {
+        "dist": "603",
+        "extId": "957487",
+        "name": "Lindenau Bushof, Leipzig",
+        "planId": "1594151042",
+        "prodclass": "288",
+        "puic": "80",
+        "urlname": "Lindenau%20Bushof,%20Leipzig",
+        "x": "12318611",
+        "y": "51331525"
+    },
+    {
+        "dist": "625",
+        "extId": "958119",
+        "name": "Karl-Heine-/Merseburger Str., Leipzig",
+        "planId": "1594151042",
+        "prodclass": "288",
+        "puic": "80",
+        "urlname": "Karl-Heine-%2FMerseburger%20Str.,%20Leipzig",
+        "x": "12333497",
+        "y": "51331363"
+    },
+    {
+        "dist": "679",
+        "extId": "956577",
+        "name": "Lindenauer Markt, Leipzig",
+        "planId": "1594151042",
+        "prodclass": "800",
+        "puic": "80",
+        "urlname": "Lindenauer%20Markt,%20Leipzig",
+        "x": "12334692",
+        "y": "51337152"
+    },
+    {
+        "dist": "696",
+        "extId": "964061",
+        "name": "Lindenau Nathanaelkirche, Leipzig",
+        "planId": "1594151042",
+        "prodclass": "32",
+        "puic": "80",
+        "urlname": "Lindenau%20Nathanaelkirche,%20Leipzig",
+        "x": "12332661",
+        "y": "51339067"
+    },
+    {
+        "dist": "705",
+        "extId": "953794",
+        "name": "S-Bahnhof Plagwitz, Leipzig",
+        "planId": "1594151042",
+        "prodclass": "312",
+        "puic": "80",
+        "urlname": "S-Bahnhof%20Plagwitz,%20Leipzig",
+        "x": "12323087",
+        "y": "51328334"
+    }
+]
